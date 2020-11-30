@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cadastro</title>
+  <!-- Meta tags Obrigatórias -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!------------------- ICONE HEADER ------------------->
+	<link rel="icon" type="imagem/svg" href="/static/icon-user.svg" />
+	<!------------------- ICONE HEADER/end ------------------->
+
+	<!------------------- CSS BOOTSTRAP ------------------->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<!------------------- CSS BOOTSTRAP/end ------------------->
+
+	<!------------------- CSS PADRAO ------------------->
+	<link rel="stylesheet" href="static/style.css" crossorigin="anonymous">
+	<!------------------- CSS PADRAO/end ------------------->
+
+</head>
+
+<body class="back">
+
+<!------------------- FORMULÁRIO DE CADASTRO ------------------->
+
+<div class=" flex-box container-box">
+	<form method="POST" action="/cadastro" name="formulario-cadastro" class="content-box-cadastro">
+		<label class="label-form">Nome:</label>
+		<input class="form-control" type="text" name="nome" id="nome">
+		<label class="label-form">E-mail:</label>
+		<input class="form-control" type="text" name="email" id= "email">
+		<label class="label-form">Usuário:</label>
+		<input class="form-control" type="text" name="user" id= "user">
+		<label class="label-form">Senha:</label>
+		<input class="form-control" type="password" name="password" id = "password">
+		<label class="label-form">Confirme a senha:</label>
+		<input class="form-control" type="password" name="password-confirm" id="password-confirm">
+		<label class="label-form" for="quantity">Nível (de 1 a 5):</label>
+	  	<input class="form-control" type="number" id="nivel" name="nivel" min="1" max="5">
+		<input class="btn btn-info" type="submit" name="submit" onclick="validar()">
+	</form>
+</div>
+
+<!------------------- FORMULÁRIO DE CADASTRO/end ------------------->
+
+
+
+</body>
+
+<!------------------- SCRIPT PARA VALIDAÇÃO DE CAMPOS DE CADASTRO ------------------->
+<script type="text/javascript">
+/* Função Validar */
+function validar() {
+  // pegando o valor do nome pelos names
+  var nome = document.getElementById("nome");
+  var email = document.getElementById("email");
+  var usuario = document.getElementById("user");
+  var senha = document.getElementById("password");
+  var senha_confirmar = document.getElementById("password-confirm");
+  var nivel = document.getElementById("nivel");
+
+
+  // verificar se o nome está vazio
+  if (nome.value == "") {
+    alert("Nome não informado");
+
+    // Deixa o input com o focus
+    nome.focus();
+    // retorna a função e não olha as outras linhas
+    return;
+  }
+  // verificar se o email está vazio
+  if (email.value == "") {
+    alert("E-mail não informado");
+    // Deixa o input com o focus
+    email.focus();
+    // retorna a função e não olha as outras linhas
+    return;
+  }
+  // verificar se a senha está vazia
+  if (senha.value == "") {
+    alert("Senha não informada");
+    // Deixa o input com o focus
+    senha.focus();
+    // retorna a função e não olha as outras linhas
+    return;
+  }
+  // verificar se a senha-confirmar está vazia
+  if (senha_confirmar.value == "") {
+    alert("Senha não informada");
+    // Deixa o input com o focus
+    senha_confirmar.focus();
+    // retorna a função e não olha as outras linhas
+    return;
+  }
+  // verificar se o nivel está vazio
+  if (nivel.value == "") {
+      alert("Nivel não informado");
+      // Deixa o input com o focus
+      nivel.focus();
+      // retorna a função e não olha as outras linhas
+      return;
+  }
+  // Verifica se a senha é diferente da senha confirmar
+  if (senha_confirmar.value != senha.value) {
+    alert("As senhas informadas não coincidem");
+    // Deixa os inputs com o focus
+    senha.focus();
+    senha_confirmar.focus();
+    // retorna a função e não olha as outras linhas
+    return;
+  }
+  window.location.href = "/";
+  alert("Formulário enviado!");
+  window.location.href = "/";
+  // envia o formulário
+}
+
+
+</script>
+<!------------------- SCRIPT PARA VALIDAÇÃO DE CAMPOS DE CADASTRO/end ------------------->
+
+
+<!------------------- JAVASCRIPT BOOTSTRAP ------------------->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!------------------- JAVASCRIPT BOOTSTRAP/end ------------------->
+</html>
+

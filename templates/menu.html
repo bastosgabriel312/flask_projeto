@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Home</title>
+
+	<!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!------------------- ICONE HEADER ------------------->
+	<link rel="icon" type="imagem/svg" href="/static/icon-user.svg" />
+	<!------------------- ICONE HEADER/end ------------------->
+
+	<!------------------- CSS BOOTSTRAP NAVBAR------------------->
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+	<!------------------- CSS BOOTSTRAP NAVBAR/end------------------->
+
+	<!------------------- CSS PADRAO ------------------->
+	<link rel="stylesheet" href="static/style.css" crossorigin="anonymous">
+	<!------------------- CSS PADRAO/end ------------------->
+</head>
+
+
+<body class="back">
+
+
+
+<!------------------- NAVBAR HOME ------------------->
+
+	<div class="navbar navbar-inverse nav" id = "menu">
+	    <div class="navbar-inner">
+	        <div class="container">
+	            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </a>
+	            <a class="brand" href="/">GGB</a>
+	    		
+	          	<div class="nav-collapse collapse">
+	              <ul class="nav">
+	                  <li class="divider-vertical"></li>
+	                  <li><a href="/home"><i class="icon-home icon-white"></i> Home</a></li>
+	              </ul>
+	              <div class="pull-right">
+	                <ul class="nav pull-right">
+	                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bem Vindo, {{nome}} <b class="caret"></b></a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" href="/usuarios"><i class="icon-cog"></i> Usuarios</a></li>
+	                            <li><a class="dropdown-item" href="#"><i class="icon-envelope"></i> Contact Support</a></li>
+
+	                            <li class="divider"></li>
+	                            <li><a class="dropdown-item" href="/logout"><i class="icon-off"></i> Logout</a></li>
+	                        </ul>
+	                    </li>
+	                </ul>
+	              </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!------------------- NAVBAR HOME/end ------------------->
+
+
+
+</body>
+</html>

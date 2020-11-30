@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<!------------------- ICONE HEADER ------------------->
+	<link rel="icon" type="imagem/svg" href="/static/icon-user.svg" />
+	<!------------------- ICONE HEADER/end ------------------->
+
+
+	<!------------------- CSS BOOTSTRAP ------------------->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<!------------------- CSS BOOTSTRAP/end ------------------->
+
+	<!------------------- CSS PADRAO ------------------->
+	<link rel="stylesheet" href="static/style.css" crossorigin="anonymous">
+	<!------------------- CSS PADRAO/end ------------------->
+</head>
+
+<body class="back-login">
+
+<!------------------- FORMULÁRIO DE LOGIN ------------------->
+
+<div class='flex-box'>
+
+	<div class="container">
+	    <div class="row">
+	        <div class="col-sm-6 col-md-4 col-md-offset-4 centered">
+	            <h1 class="text-center login-title">Preencha os dados para Logar em Projeto</h1>
+	            <div class="account-wall">
+	                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+	                    alt="">
+	                <form class="form-signin" method="POST" action="/validacao">
+	                <input type="text" class="form-control" placeholder="Usuário" name="usuario" required autofocus>
+	                <input type="password" class="form-control" placeholder="Senha" name="senha" required>
+	                <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">
+	                    Entrar</button>
+	                <label class="checkbox pull-left">
+	                    <input type="checkbox" value="remember-me">
+	                    Lembrar de mim     
+	                </label>
+	                <a href="#" class="pull-right need-help">Precisa de ajuda? </a><span class="clearfix"></span>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+
+<!--
+
+	<div class='flex-box container-box'>
+		<form method="POST" action="/validacao" class="content-box">
+			<label class="label-form" >USUARIO:</label>
+			<input class= "form-control" type="text" name="usuario">
+			<label class="label-form">SENHA:</label>
+			<input class = "form-control" type="password" name="senha" >
+			<input type="submit" name="submit" class="btn btn-info" >
+		</form>
+	</div>
+-->
+<!------------------- FORMULÁRIO DE LOGIN/end ------------------->
+
+</body>
+
+<!------------------- JAVASCRIPT BOOTSTRAP ------------------->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!------------------- JAVASCRIPT BOOTSTRAP/end ------------------->
+
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Usuarios</title>
+	<!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!------------------- ICONE HEADER ------------------->
+	<link rel="icon" type="imagem/svg" href="/static/icon-user.svg" />
+	<!------------------- ICONE HEADER/end ------------------->
+	
+	<!------------------- CSS BOOTSTRAP NAVBAR------------------->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<!------------------- CSS BOOTSTRAP NAVBAR/end------------------->
+
+	<!------------------- CSS PADRAO ------------------->
+	<link rel="stylesheet" href="static/style.css" crossorigin="anonymous">
+	<!------------------- CSS PADRAO/end ------------------->
+</head>
+
+<body class="back">		
+
+
+<!------------------- NAVBAR HOME ------------------->
+
+
+
+<!------------------- NAVBAR HOME ------------------->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 1%; width: 100%;">
+	<!------------------- NAVBAR - ICONE E TEXTO ------------------->
+	<a class="navbar-brand" href="#">
+    	<img src="/static/icon-user.svg" width="30" height="30" class="d-inline-block align-top" alt="icone-usuario">
+   		 	Projeto
+  	</a>
+  	<!------------------- NAVBAR - ICONE E TEXTO/END ------------------->
+
+  	<!------------------- NAVBAR - BOTÃO NAVBAR RESPONSIVA ------------------->
+  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
+	    <span class="navbar-toggler-icon"></span>
+  	</button>
+  	<!------------------- NAVBAR - BOTÃO NAVBAR RESPONSIVA/END ------------------->
+
+	<!------------------- NAVBAR - CONTÉM ITENS DA NAVBAR ------------------->
+	<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+		<ul class="navbar-nav navbar-right">
+			<li class="nav-item active">
+				<a class="nav-link navbar-right" href="/home">Home <span class="sr-only"></span></a>
+	    	</li>
+	    	<li class="nav-item navbar-right">
+	        	<a class="nav-link" href="/quem_somos">Quem Somos?</a>
+	    	</li>
+	    	<li class="nav-item navbar-right">
+	    		<a class="nav-link" href="#">Projetos</a>
+	    	</li>
+
+	    	<!------------------- NAVBAR - NAVBAR TOGGLE ------------------->
+			<li class="nav-item dropdown mr-sm-2">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							          Bem vindo, {{nome}}
+				</a>
+
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="/configuracao">Configurações</a>
+					<a class="dropdown-item" href="#">Contato</a>
+					<a class="dropdown-item" href="/usuarios">Usuarios</a>
+					<a class="dropdown-item" href="/logout">Sair</a>
+				</div>
+			</li>
+			<!------------------- NAVBAR - NAVBAR TOGGLE ------------------->
+	    </ul>
+
+	</div>
+	<!------------------- NAVBAR - CONTÉM ITENS DA NAVBAR/END ------------------->
+</nav>
+
+<!------------------- NAVBAR HOME/end ------------------->
+
+
+<!------------------- CARROUSSEL ------------------->
+
+<div class="container">
+	<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+	  <div class="carousel-inner">
+	    <div class="carousel-item active">
+	      <img class="d-block w-100" src="https://mercadoeconsumo.com.br/wp-content/uploads/2019/12/bigstock-Omni-Channel-Technology-Of-Onl-336037885.jpg" alt="Primeiro Slide">
+	    </div>
+	    <div class="carousel-item">
+	      <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxVLn5_VexeuBO3KQs72mtQlBO0UZJyphRvw&usqp=CAU" alt="Segundo Slide">
+	    </div>
+	    <div class="carousel-item">
+	      <img class="d-block w-100" src="https://boavistatecnologia.com.br/blog/wp-content/uploads/2019/03/tecnologia-no-setor-financeiro.jpg" alt="Terceiro Slide">
+	    </div>
+	  </div>
+	</div>
+</div>
+<!------------------- CARROUSSEL/end ------------------->
+
+
+
+
+<!------------------- TABELA DE LOGINS/end ------------------->
+
+
+
+
+
+<!------------------- JAVASCRIPT BOOTSTRAP ------------------->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!------------------- JAVASCRIPT BOOTSTRAP/end ------------------->
+</body>
+</html>
