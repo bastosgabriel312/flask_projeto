@@ -1,89 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Usuarios</title>
-	<!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!------------------- ICONE HEADER ------------------->
-	<link rel="icon" type="imagem/svg" href="/static/icon-user.svg" />
-	<!------------------- ICONE HEADER/end ------------------->
-	
-	<!------------------- CSS BOOTSTRAP NAVBAR------------------->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<!------------------- CSS BOOTSTRAP NAVBAR/end------------------->
-
-	<!------------------- CSS PADRAO ------------------->
-	<link rel="stylesheet" href="static/style.css" crossorigin="anonymous">
-	<!------------------- CSS PADRAO/end ------------------->
-</head>
-
-<body class="back">		
+{% include 'navbar.html' %}
 
 
-<!------------------- NAVBAR HOME ------------------->
-
-
-
-<!------------------- NAVBAR HOME ------------------->
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 1%; width: 100%;">
-	<!------------------- NAVBAR - ICONE E TEXTO ------------------->
-	<a class="navbar-brand" href="#">
-    	<img src="/static/icon-user.svg" width="30" height="30" class="d-inline-block align-top" alt="icone-usuario">
-   		 	Projeto
-  	</a>
-  	<!------------------- NAVBAR - ICONE E TEXTO/END ------------------->
-
-  	<!------------------- NAVBAR - BOTÃO NAVBAR RESPONSIVA ------------------->
-  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
-	    <span class="navbar-toggler-icon"></span>
-  	</button>
-  	<!------------------- NAVBAR - BOTÃO NAVBAR RESPONSIVA/END ------------------->
-
-	<!------------------- NAVBAR - CONTÉM ITENS DA NAVBAR ------------------->
-	<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-		<ul class="navbar-nav navbar-right">
-			<li class="nav-item active">
-				<a class="nav-link navbar-right" href="/home">Home <span class="sr-only"></span></a>
-	    	</li>
-	    	<li class="nav-item navbar-right">
-	        	<a class="nav-link" href="/quem_somos">Quem Somos?</a>
-	    	</li>
-	    	<li class="nav-item navbar-right">
-	    		<a class="nav-link" href="#">Projetos</a>
-	    	</li>
-
-	    	<!------------------- NAVBAR - NAVBAR TOGGLE ------------------->
-			<li class="nav-item dropdown mr-sm-2">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							          Bem vindo, {{nome}}
-				</a>
-
-				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="/configuracao">Configurações</a>
-					<a class="dropdown-item" href="#">Contato</a>
-					<a class="dropdown-item" href="/usuarios">Usuarios</a>
-					<a class="dropdown-item" href="/logout">Sair</a>
-				</div>
-			</li>
-			<!------------------- NAVBAR - NAVBAR TOGGLE ------------------->
-	    </ul>
-
-	</div>
-	<!------------------- NAVBAR - CONTÉM ITENS DA NAVBAR/END ------------------->
-</nav>
-
-<!------------------- NAVBAR HOME/end ------------------->
-
-	<!------------------- NAVBAR HOME/end ------------------->
-
-
-
+<body class="back">
 <!------------------- TABELA DE LOGINS ------------------->
  
 
 	<div class="container">
+		<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 1%;">Editar usuários</button>
 	<table class="table table-striped table-dark">
 	  <thead>
 	      <th scope="col">ID</th>
@@ -119,35 +42,122 @@
 	</div>
 
 
-	<!-------- Small modal --------
-
-		<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-sm">
-		    <div class="modal-content">
-		      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Alterar Senha</h5>
+	<!-- Large modal -->
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Usuário</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      	</div>
-      		<div class="modal-body">
+      </div>
+      <div class="modal-body">
+        
 
-		          <div class="form-group">
-		          	<input class="form-control" value = 1 readonly = "read-only" type="text" name="id" id = "id">
-		            <label for="recipient-name" class="col-form-label">Nova Senha:</label>
-		            <input class="form-control" type="password" name="password-user" id = "password-user">
-		          </div>
-		          <div class="form-group">
-		            <label for="message-text" class="col-form-label">Confirme a Nova Senha:</label>
-		            <input class="form-control" type="password" name="password-confirm" id="password-confirm">
-		          </div>
-		        
-		          <input class="btn btn-info" type="submit" name="submit" onclick="v_altera_senha()">
-		        </form>
-			    </div>
+<!------------------- FORMULÁRIO DE EDIÇÃO DE USUARIO ------------------->
+	<div class="container">
+		<form action="/usuarios" method="POST">
+			<!------------------- OPTIONS - EDIÇÃO DE USUARIO ------------------->
+			<div class="form-group">
+	  			<div class="input-group mb-3">
+				  	<div class="input-group-prepend">
+				    	<label class="input-group-text" for="inputGroupSelect01">Usuário</label>
+				  	</div>
+				  	<select class="custom-select" id="inputGroupSelect01" name = "option_user">
+				    	<option value =""  selected>Escolha um usuário...</option>
+				    	{% for teste in usuarios %}
+				    		<option value="{{teste[0]}}"  id ="option_user">{{teste[1]}}</option>
+				    	{% endfor%}
+				 	</select>
+				</div>
+			</div>
+			<!------------------- OPTIONS - EDIÇÃO DE USUARIO ------------------->
+
+
+		  	<div class="form-group">
+		    	<label class="label-form" >Nome:</label>
+		    	<input type="text" class="form-control" id="nome_atual" name="nome_atual" placeholder="Nome">
+		  	</div>
+		  	<div class="form-group">
+		    	<label class="label-form" >E-mail:</label>
+		    	<input type="email" class="form-control" id="email_atual" name="email_atual" placeholder="Senha">
+		  	</div>
+		  	<div class="form-group">
+		    	<label class="label-form" >Usuário:</label>
+		  		<input type="text" class="form-control" id="usuario_atual" name="usuario_atual" placeholder="Usuário">
+		  	</div>
+		  	<div class="form-group">
+		    	<label class="label-form" >Senha:</label>
+		    	<input type="text" class="form-control" id="senha_atual" name="senha_atual" placeholder="Senha antiga">
+		    	<small>Até 9 caracteres</small>
+		  	</div>
+		  	<div class="form-group">
+		    	<label class="label-form" >Confirmar senha:</label>
+				<input type="text" class="form-control" id="confirmar_senha" name="confirmar_senha" placeholder="Alterar Senha">
 		 	</div>
-		</div>
-	!-------- Small modal -------->
+		 	<h5>Dados a Atualizar:</h5>
+		 	<div class="row">
+			    <div class="col">
+			    	<div class="form-group">
+						<div class="form-check">
+				  				<input class="form-check-input" type="checkbox" value="True" id="update_nome" name="update_nome">
+				  				<label class="form-check-label" for="update_nome">
+				    				Nome
+				  				</label>
+						</div>
+						<div class="form-check">
+				 				<input class="form-check-input" type="checkbox" value="True" id="update_email" name="update_email">
+				  				<label class="form-check-label" for="update_email">
+				    				E-mail
+				  				</label>
+						</div>
+					</div>
+			    </div>
+			    <div class="col">
+			    	<div class="form-group">
+						<div class="form-check">
+				  				<input class="form-check-input" type="checkbox" value="True" id="update_usuario" name="update_usuario">
+				  				<label class="form-check-label" for="update_usuario">
+				    				Usuário
+				  				</label>
+						</div>
+						<div class="form-check">
+				 				<input class="form-check-input" type="checkbox" value="True" id="update_senha" name="update_senha">
+				  				<label class="form-check-label" for="update_senha">
+				    				Senha
+				  				</label>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<hr>
+								<div class="form-check">
+				 				<input class="form-check-input is-invalid" type="checkbox" value="True" id="delete_usuario" name="delete_usuario">	
+				  				<label class="form-check-label" for="delete_usuario">
+				    				Excluir Usuário - 
+				  		
+				  				<strong>Atenção operação irreversível</strong></label>
+						</div>
+	</div>
+
+<!------------------- FORMULÁRIO DE EDIÇÃO DE USUARIO/end ------------------->
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" onclick="validar()">Enviar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
 
@@ -159,90 +169,104 @@
 
 
 
-<!------------------- SCRIPT PARA VALIDAÇÃO DE CAMPOS DE CADASTRO ------------------->
+<!------------------- SCRIPT PARA VALIDAÇÃO DE CAMPOS DE USUARIOS ------------------->
 <script type="text/javascript">
 /* Função Validar */
 function validar() {
   // pegando o valor do nome pelos names
-  var nome = document.getElementById("nome");
-  var email = document.getElementById("email");
-  var usuario = document.getElementById("user");
+  var id = document.getElementById("option_user")
+  var nome = document.getElementById("nome_atual");
+  var email = document.getElementById("email_atual");
+  var usuario = document.getElementById("usuario_atual");
   var senha = document.getElementById("password");
   var senha_confirmar = document.getElementById("password-confirm");
   var nivel = document.getElementById("nivel");
+  var update_nome = document.getElementById("update_nome")
+  var update_email = document.getElementById("update_email")
+  var update_usuario = document.getElementById("update_usuario")
+  var update_senha = document.getElementById("update_senha")
+  var delete_usuario = document.getElementById("delete_usuario")
 
+
+
+
+  // verificar delete usuário
+	if (delete_usuario.checked) {
+	  let confirmar = confirm("Tem certeza?")
+	  if (confirmar==true) {
+	  	alert("Usuário deletado!!!");
+	  }
+	  else{
+	  	alert("Operação cancelada!");
+	  	return;
+	  }
+
+	}
 
   // verificar se o nome está vazio
-  if (nome.value == "") {
-    alert("Nome não informado");
-    // retorna a função e não olha as outras linhas
-    return;
-  }
+	if (update_nome.checked) {
+	  if (nome.value == "") {
+	    alert("Nome não informado, valores não atualizados.");
+	    // retorna a função e não olha as outras linhas
+	    return;
+	  }
+
+	}
+	// verificar se o nome está vazio
+	if (update_usuario.checked) {
+	  if (usuario.value == "") {
+	    alert("Usuário não informado, valores não atualizados.");
+	    // retorna a função e não olha as outras linhas
+	    return;
+	  }
+
+	}
   // verificar se o email está vazio
-  if (email.value == "") {
-    alert("E-mail não informado");
-    // retorna a função e não olha as outras linhas
-    return;
-  }
+  	if (update_email.checked){
+	  if (email.value == "") {
+	    alert("E-mail não informado, valores não atualizados.");
+	    // retorna a função e não olha as outras linhas
+	    return;
+	  }
+
+	}
+
   // verificar se a senha está vazia
-  if (senha.value == "") {
-    alert("Senha não informada");
-    // retorna a função e não olha as outras linhas
-    return;
-  }
+	if (update_senha.checked) {
+	  if (senha.value == "") {
+	    alert("Senha não informada, valores não atualizados.");
+	    // retorna a função e não olha as outras linhas
+	    return;
+	  }
+
+	}
+
   // verificar se a senha-confirmar está vazia
-  if (senha_confirmar.value == "") {
-    alert("Senha não informada");
-    // retorna a função e não olha as outras linhas
-    return;
-  }
-  // verificar se o nivel está vazio
-  if (nivel.value == "") {
-      alert("Nivel não informado");
-      // retorna a função e não olha as outras linhas
-      return;
-  }
+  	if (update_senha.checked) {
+	  if (senha_confirmar.value == "") {
+	    alert("Confirmação de senha não informada, valores não atualizados.");
+	    // retorna a função e não olha as outras linhas
+	    return;
+	  }
+
+	}
+
   // Verifica se a senha é diferente da senha confirmar
-  if (senha_confirmar.value != senha.value) {
-    alert("As senhas informadas não coincidem");
-    // retorna a função e não olha as outras linhas
-    return;
-  }
-  window.location.href = "/";
-  alert("Formulário enviado!");
+  	if (update_senha.checked) {
+	  if (senha_confirmar.value != senha.value) {
+	    alert("As senhas informadas não coincidem, valores não atualizados.");
+	    // retorna a função e não olha as outras linhas
+	    return;
+	  }
+
+	}
+
+  alert("Dados atualizados");
   // envia o formulário
+  window.location.href = "/usuarios";
 }
 
 
-/* Função Validar */
-function v_altera_senha() {
-  // pegando o valor do nome pelos names
-  var senha = document.getElementById("password-user");
-  var senha_confirmar = document.getElementById("password-confirm");
-  var nivel = document.getElementById("id_user");
-
-
-  // verificar se a senha está vazia
-  if (senha.value == "") {
-    alert("Senha não informada");
-    // retorna a função e não olha as outras linhas
-    return;
-  }
-  // verificar se a senha-confirmar está vazia
-  if (senha_confirmar.value == "") {
-    alert("Senha não informada");
-    // retorna a função e não olha as outras linhas
-    return;
-  }
-  // Verifica se a senha é diferente da senha confirmar
-  if (senha_confirmar.value != senha.value) {
-    alert("As senhas informadas não coincidem");
-    // retorna a função e não olha as outras linhas
-    return;
-  };
-  alert("Senha alterada!");
-  // envia o formulário
-}
 
 </script>
 

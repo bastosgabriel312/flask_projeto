@@ -21,29 +21,47 @@
 
 </head>
 
-<body class="back">
-
-<!------------------- FORMULÁRIO DE CADASTRO ------------------->
-
-<div class=" flex-box container-box">
-	<form method="POST" action="/cadastro" name="formulario-cadastro" class="content-box-cadastro">
-		<label class="label-form">Nome:</label>
-		<input class="form-control" type="text" name="nome" id="nome">
-		<label class="label-form">E-mail:</label>
-		<input class="form-control" type="text" name="email" id= "email">
-		<label class="label-form">Usuário:</label>
-		<input class="form-control" type="text" name="user" id= "user">
-		<label class="label-form">Senha:</label>
-		<input class="form-control" type="password" name="password" id = "password">
-		<label class="label-form">Confirme a senha:</label>
-		<input class="form-control" type="password" name="password-confirm" id="password-confirm">
-		<label class="label-form" for="quantity">Nível (de 1 a 5):</label>
-	  	<input class="form-control" type="number" id="nivel" name="nivel" min="1" max="5">
-		<input class="btn btn-info" type="submit" name="submit" onclick="validar()">
-	</form>
+<body class="back-login">
+<div class="container" style="margin-left: 4%;">
+  <a href="/" class="" style="color: black;"> <img src="/static/icon-login.svg" width="25" height="25" class="d-inline-block align-top">Pagina de Login</a>
 </div>
 
-<!------------------- FORMULÁRIO DE CADASTRO/end ------------------->
+  <!------------------- FORMULÁRIO DE CADASTRO ------------------->
+
+  <div class="container content-box-cadastro" style="margin-top: 5%" >
+  	<form method="POST" action="/cadastro" name="formulario-cadastro" class="">
+      <div class="form-group">
+        		<label class="label-form">Nome:</label>
+        		<input class="form-control" type="text" name="nome" id="nome" placeholder="Ex: Carlos João Silva dos Santos">
+      </div>
+      <div class="form-group">
+        		<label class="label-form">E-mail:</label>
+        		<input class="form-control" type="email" name="email" id= "email" placeholder="Ex: carlossilva@projeto.com.br">
+      </div>
+      <div class="form-group">
+        		<label class="label-form">Usuário:</label>
+        		<input class="form-control" type="text" name="user" id= "user" placeholder="Ex: carlossantos2001">
+      </div>
+      <div class="form-group">
+        		<label class="label-form">Senha:</label>
+        		<input class="form-control" type="password" name="password" id = "password" placeholder="Insira sua senha">
+      </div>
+      <div class="form-group">
+        		<label class="label-form">Confirme a senha:</label>
+        		<input class="form-control" type="password" name="password-confirm" id="password-confirm" placeholder="Confirme sua senha">
+      </div>
+      <div class="form-group">
+        		<label class="label-form" for="quantity">Nível (de 1 a 5):</label>
+        	  <input class="form-control" type="number" id="nivel" name="nivel" min="1" max="5">
+            <small class="text-muted">No momento não é utilizado, mas futuramente será utilizado para fins hierárquicos</small>
+      </div>
+      <div class="form-group" >
+        		<button type="submit" class="btn btn-primary" onclick="validar()" style="margin-bottom: 5px;">Enviar</button>
+      </div>
+  	</form>
+  </div>
+
+  <!------------------- FORMULÁRIO DE CADASTRO/end ------------------->
 
 
 
