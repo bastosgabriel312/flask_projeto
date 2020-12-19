@@ -1,5 +1,6 @@
 from flask import Flask, render_template, make_response, request, session, Blueprint
 from mysql import *
+from time import sleep
 
 ################ FLASK PARAMETROS ################
 app = Flask(__name__)
@@ -42,6 +43,7 @@ def session_login():
                                                 session['nome'] = nome
                                                 session['email'] = email
                                                 session['nivel'] = nivel
+                                                
                         return resp
         return pad
 
@@ -64,7 +66,13 @@ def index():
 @app.route('/home', methods = ['POST', 'GET'])
 def home():
         if 'login' in session:
-                return render_template('home.html', id = session["id"], usuario = session['login'], nome = session['nome'], email = session['email'])
+            artigos = executar.read_allartigos()
+            if request.form.get('idartigo',None) != None:
+                executar.delete_artigo(request.form['idartigo'])
+            if request.method == 'POST':
+                if request.form.get('titulo',None) != None and request.form.get('conteudo',None) :
+                    executar.create_artigo(request.form['titulo'],request.form['conteudo'],request.form['autor'])
+            return render_template('home.html',title = 'Home',icon = 'icon-home.svg', id = session["id"], usuario = session['login'], nome = session['nome'], email = session['email'], artigos = artigos)
         return "Você não está logado <a href='/'>Clique aqui para ir para pagina de login</a>"
 
 
@@ -72,20 +80,18 @@ def home():
 ################ PAGINA DE CADASTRO (FORMULÁRIO) - ACESSIVEL APÓS LOGIN ################
 @app.route('/cadastro', methods = ['POST','GET'])
 def cadastro():
-        if 'login' in session:
-                if request.method == 'POST':
-                        user = request.form['user']
-                        password = request.form['password']
-                        email = request.form['email']
-                        nome = request.form['nome']
-                        nivel = request.form['nivel']
-                        usuario = executar.temp_user(user)
-                        if user != "" and password != "" and email != "" and nome != "" and nivel != "":
-                                if usuario == None:
-                                        executar.create_user(user,password,nome,email,nivel)
-                return render_template('cadastro.html',id = session["id"], usuario = session['login'], nome = session['nome'], email = session['email'])
-        else:
-                return "Você não está logado <a href='/'>Clique aqui para ir para pagina de login</a>"
+            if request.method == 'POST':
+                    user = request.form['user']
+                    password = request.form['password']
+                    email = request.form['email']
+                    nome = request.form['nome']
+                    nivel = request.form['nivel']
+                    usuario = executar.temp_user(user)
+                    if user != "" and password != "" and email != "" and nome != "" and nivel != "":
+                            if usuario == None:
+                                    executar.create_user(user,password,nome,email,nivel)
+            return render_template('cadastro.html')
+
 
 
 ################ PAGINA DE USUARIOS - ACESSIVEL APÓS LOGIN ################
@@ -93,12 +99,23 @@ def cadastro():
 def usuarios():
         if 'login' in session:
                 usuarios = executar.read_alllogin()
+                    
+
                 if request.method == 'POST':
-                        id_user = request.form['id_user']
-                        print("id: ",id_user)
-                        password = request.form['password-user']
-                        executar.update_senha(id_user,password)
-                return render_template('usuarios.html',id = session["id"], usuarios = usuarios, usuario = session['login'], nome = session['nome'], email = session['email'])
+                    if request.form.get('delete_usuario', None) =='True':
+                        executar.delete_user(request.form['option_user'])
+                    else:
+                        if request.form.get('update_nome', None) =='True':
+                            executar.update_nome(request.form['option_user'],request.form['nome_atual'])
+                        if request.form.get('update_email', None) == 'True':
+                            executar.update_email(request.form['option_user'],request.form['email_atual'])
+                        if request.form.get('update_usuario', None) == 'True':
+                            executar.update_usuario(request.form['option_user'],request.form['usuario_atual'])
+                        if request.form.get('update_senha', None) == 'True':
+                            executar.update_senha(request.form['option_user'],request.form['senha_atual'])
+
+
+                return render_template('usuarios.html',title ='Usuários' ,icon = 'icon-lista.svg',id = session["id"], usuarios = usuarios, usuario = session['login'], nome = session['nome'], email = session['email'])
         return "Você não está logado <a href='/'>Clique aqui para ir para pagina de login</a>"
 
 
@@ -118,15 +135,16 @@ def perfil():
                     if request.form['senha_antiga'] == temp_user.get_senha():
                         executar.update_senha(id,senha_atual)
 
-            return render_template('editar_usuario.html',id = session["id"], usuario = session['login'], nome = session['nome'], email = session['email'])
+            return render_template('editar_usuario.html',title = "Meu perfil",icon = 'icon-user.svg', id = session["id"], usuario = session['login'], nome = session['nome'], email = session['email'])
         return "Você não está logado <a href='/'>Clique aqui para ir para pagina de login</a>"
 
 ################ PAGINA DE QUEM SOMOS - ACESSIVEL APÓS LOGIN ################
 @app.route('/quem_somos', methods = ['POST', 'GET'])
 def quem_somos():
         if 'login' in session:
-            return render_template('quem_somos.html',id = session["id"], usuario = session['login'], nome = session['nome'], email = session['email'])
+            return render_template('quem_somos.html',title = "Sobre nós", id = session["id"], usuario = session['login'], nome = session['nome'], email = session['email'])
         return "Você não está logado <a href='/'>Clique aqui para ir para pagina de login</a>"
+
 
 
 

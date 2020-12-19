@@ -1,5 +1,7 @@
 import pymysql
 from usuarios import Usuario
+from artigos import Artigo
+
 ############ CONEXAO MYSQL HEROKU #########################
 '''
 username: b7b2178122d9f2
@@ -20,6 +22,8 @@ class ConexaoMysql():
                 user = 'b7b2178122d9f2'
                 password = '21659ddc'
                 '''
+
+        ############ CRIAR USUÁRIO ########################
         def create_user(self,login,senha,nome,email,nivel):
                 conexao = pymysql.connect(host=self.host ,db=self.db, user=self.user, passwd=self.password)
                 cursor = conexao.cursor()
@@ -29,6 +33,7 @@ class ConexaoMysql():
                 conexao.commit()
                 conexao.close()
 
+        ############ LER USUÁRIO ########################
         def read_login(self,login):
 	        conexao = pymysql.connect(host=self.host ,db=self.db, user=self.user, passwd=self.password)
 	        cursor = conexao.cursor()
@@ -42,6 +47,7 @@ class ConexaoMysql():
 	        conexao.close()
 	        return usuario
 
+        ############ USUÁRIO TEMPORÁRIO ########################
         def temp_user(self,login):
                 try:
                         mysql_return = self.read_login(login)
@@ -59,6 +65,16 @@ class ConexaoMysql():
                 cursor = conexao.cursor()
                 query = f"UPDATE TB_USUARIOS SET NOME = %s WHERE ID = %s;"
                 tuple_update = (novo_nome,id)
+                cursor.execute(query,tuple_update)
+                conexao.commit()
+                conexao.close()
+                return
+
+        def update_usuario(self,id,novo_usuario):
+                conexao = pymysql.connect(host=self.host ,db=self.db, user=self.user, passwd=self.password)
+                cursor = conexao.cursor()
+                query = f"UPDATE TB_USUARIOS SET LOGIN = %s WHERE ID = %s;"
+                tuple_update = (novo_usuario,id)
                 cursor.execute(query,tuple_update)
                 conexao.commit()
                 conexao.close()
@@ -84,6 +100,8 @@ class ConexaoMysql():
                 conexao.close()
                 return
 
+
+        ############ DELETAR USUÁRIO ########################
         def delete_user(self, id):
                 conexao = pymysql.connect(host=self.host ,db=self.db, user=self.user, passwd=self.password)
                 cursor = conexao.cursor()
@@ -93,6 +111,7 @@ class ConexaoMysql():
                 conexao.commit()
                 conexao.close()
 
+        ############ LER TODOS USUÁRIOS ########################
         def read_alllogin(self):
                 conexao = pymysql.connect(host=self.host ,db=self.db, user=self.user, passwd=self.password)
                 cursor = conexao.cursor()
@@ -105,5 +124,39 @@ class ConexaoMysql():
                 conexao.close()
                 return usuario
 
+
+        ############ LER TODOS ARTIGOS ########################
+        def read_allartigos(self):
+                conexao = pymysql.connect(host=self.host ,db=self.db, user=self.user, passwd=self.password)
+                cursor = conexao.cursor()
+                query = f"SELECT * FROM TB_ARTIGO"
+                cursor.execute(query)
+                artigos = []
+                for artigo in cursor:
+                        artigos.append([artigo[0],artigo[1], artigo[2], artigo[3]])
+                return artigos
+                conexao.commit()
+                conexao.close()
+                
+        ############ CREATE ARTIGO ########################
+
+        def create_artigo(self, titulo, conteudo, autor):
+                conexao = pymysql.connect(host=self.host ,db=self.db, user=self.user, passwd=self.password)
+                cursor = conexao.cursor()
+                query = f"INSERT INTO TB_ARTIGO (TITULO, CONTEUDO, AUTOR) VALUES (%s,%s,%s)"
+                tupla_artigo = (titulo, conteudo, autor)
+                cursor.execute(query,tupla_artigo)
+                conexao.commit()
+                conexao.close()
+
+        ############ DELETAR ARTIGO ########################
+        def delete_artigo(self, id):
+                conexao = pymysql.connect(host=self.host ,db=self.db, user=self.user, passwd=self.password)
+                cursor = conexao.cursor()
+                query = f"DELETE FROM TB_ARTIGO WHERE ID = %s;"
+                tuple_delete = (id)
+                cursor.execute(query,id)
+                conexao.commit()
+                conexao.close()
 
                
